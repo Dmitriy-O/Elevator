@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="914b796a-75f8-48e5-b033-4cee44b79911" name="Changes" comment="[Fix] Resolved button issue" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="bugfix/FixProblems" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2gogZZIkM7jQI37sEtKTB2Wuo2P" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/ED-48",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Projects/Web/ts-education-project_/[Fix]_Fixed_Errors_with_path1.patch",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.lint:fix.executor": "Run",
+    "npm.mock:init.executor": "Run",
+    "npm.mock:start.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "settings.typescriptcompiler",
+    "ts.external.directory.path": "D:\\Projects\\Web\\lift24-frontend\\node_modules\\typescript\\lib",
+    "vcs.patch.path": "D:/Projects/Web/ts-education-project_",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Web\lift24-frontend\mock\utils\data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="lint:fix" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint:fix" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="mock:init" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="mock:init" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="mock:start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="mock:start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.lint:fix" />
+        <item itemvalue="npm.mock:init" />
+        <item itemvalue="npm.mock:start" />
+        <item itemvalue="npm.lint:fix" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="914b796a-75f8-48e5-b033-4cee44b79911" name="Changes" comment="" />
+      <created>1716369400742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716369400742</updated>
+      <workItem from="1716369401973" duration="2172000" />
+      <workItem from="1716371647560" duration="15537000" />
+      <workItem from="1716387983895" duration="15658000" />
+      <workItem from="1716449496464" duration="2648000" />
+      <workItem from="1716467909544" duration="10438000" />
+      <workItem from="1716482421099" duration="23878000" />
+      <workItem from="1716548577516" duration="10979000" />
+      <workItem from="1716569412782" duration="2197000" />
+      <workItem from="1716637851537" duration="2414000" />
+      <workItem from="1716735901992" duration="6579000" />
+      <workItem from="1716796855704" duration="10419000" />
+      <workItem from="1716809765589" duration="3801000" />
+      <workItem from="1716823352085" duration="679000" />
+      <workItem from="1717053449127" duration="718000" />
+    </task>
+    <task id="LOCAL-00001" summary="[ED-45] Initial Commit completed frontend part">
+      <option name="closed" value="true" />
+      <created>1716384044545</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716384044545</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[ED-45] Merged with master">
+      <option name="closed" value="true" />
+      <created>1716384231448</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716384231448</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[ED-45] Added api logic">
+      <option name="closed" value="true" />
+      <created>1716408573447</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716408573447</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[ED-45] Added useNavigate and Slice">
+      <option name="closed" value="true" />
+      <created>1716451927994</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716451927994</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[ED-45] Added useNavigate and mock server">
+      <option name="closed" value="true" />
+      <created>1716478966948</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716478966948</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[ED-45] Resolved conflicts">
+      <option name="closed" value="true" />
+      <created>1716485892371</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716485892371</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[ED-45] Resolved comments">
+      <option name="closed" value="true" />
+      <created>1716487532222</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716487532222</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[Fix] Fixed Errors (but problem with link)">
+      <option name="closed" value="true" />
+      <created>1716495791640</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716495791640</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[Fix] Fixed Errors with path">
+      <option name="closed" value="true" />
+      <created>1716496866605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716496866605</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[Fix] Added Validation + resolved some problem with inputting data">
+      <option name="closed" value="true" />
+      <created>1716747974390</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716747974390</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[Fix] Merged conflicts and unnecessary code deleted">
+      <option name="closed" value="true" />
+      <created>1716799801623</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716799801623</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[Fix] PR issues solved design update">
+      <option name="closed" value="true" />
+      <created>1716801478310</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716801478310</updated>
+    </task>
+    <task id="LOCAL-00013" summary="[Fix] PR issues solved design update">
+      <option name="closed" value="true" />
+      <created>1716805822119</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716805822119</updated>
+    </task>
+    <task id="LOCAL-00014" summary="[Fix]  design update">
+      <option name="closed" value="true" />
+      <created>1716807749158</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716807749158</updated>
+    </task>
+    <task id="LOCAL-00015" summary="[Fix] Redundant code">
+      <option name="closed" value="true" />
+      <created>1716808753728</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716808753728</updated>
+    </task>
+    <task id="LOCAL-00016" summary="[Fix] Resolved button issue">
+      <option name="closed" value="true" />
+      <created>1716811659654</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716811659654</updated>
+    </task>
+    <task id="LOCAL-00017" summary="[Fix] Resolved button issue">
+      <option name="closed" value="true" />
+      <created>1716813415554</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716813415554</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[ED-45] Initial Commit completed frontend part" />
+    <MESSAGE value="[ED-45] Merged with master" />
+    <MESSAGE value="[ED-45] Added api logic" />
+    <MESSAGE value="[ED-45] Added useNavigate and Slice" />
+    <MESSAGE value="[ED-45] Added useNavigate and mock server" />
+    <MESSAGE value="[ED-45] Resolved conflicts" />
+    <MESSAGE value="[ED-45] Resolved comments" />
+    <MESSAGE value="[Fix] Fixed Errors (but problem with link)" />
+    <MESSAGE value="[Fix] Fixed Errors with path" />
+    <MESSAGE value="[Fix] Added Validation + resolved some problem with inputting data" />
+    <MESSAGE value="[Fix] Merged conflicts and unnecessary code deleted" />
+    <MESSAGE value="[Fix] PR issues solved design update" />
+    <MESSAGE value="[Fix]  design update" />
+    <MESSAGE value="[Fix] Redundant code" />
+    <MESSAGE value="[Fix] Resolved button issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Resolved button issue" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>

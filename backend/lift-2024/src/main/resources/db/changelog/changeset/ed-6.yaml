@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: ed-6.1
+      author: romab
+      changes:
+        - addColumn:
+            tableName: ENGINE
+            columns:
+              - column:
+                  name: STATUS
+                  type: varchar(50)
+
+  - changeSet:
+      id: ed-6.2
+      author: daniilz
+      changes:
+        - addColumn:
+            tableName: LIFT
+            columns:
+              - column:
+                  name: STATUS
+                  type: varchar(50)

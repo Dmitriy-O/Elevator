@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.sytoss.bdd.RunCucumberTest
+-------------------------------------------------------------------------------
+Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 82.65 s -- in org.sytoss.bdd.RunCucumberTest

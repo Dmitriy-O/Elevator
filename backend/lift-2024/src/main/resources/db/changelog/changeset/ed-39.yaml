@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: ed-39.1
+      author: romab
+      changes:
+        - addColumn:
+            tableName: LIFT
+            columns:
+              - column:
+                  name: FLOOR_NUMBERS
+                  type: varchar(255)

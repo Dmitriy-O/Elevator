@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: ed-5.1.1
+      author: vladyslavh
+      changes:
+        - createSequence:
+            dataType: int
+            incrementBy: 1
+            sequenceName: ADDRESS_SEQ_ID
+            startValue: 1
+
+  - changeSet:
+      id: ed-5.1.2
+      author: vladyslavh
+      changes:
+        - createTable:
+            tableName: ADDRESS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_ADDRESS
+              - column:
+                  name: CITY
+                  type: varchar(90)
+              - column:
+                  name: STREET
+                  type: varchar(100)
+
+  - changeSet:
+      id: ed-5.2.1
+      author: vladyslavh
+      changes:
+        - createSequence:
+            dataType: int
+            incrementBy: 1
+            sequenceName: BUILDING_SEQ_ID
+            startValue: 1
+
+  - changeSet:
+      id: ed-5.2.2
+      author: vladyslavh
+      changes:
+        - createTable:
+            tableName: BUILDING
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_BUILDING
+              - column:
+                  name: ADDRESS_ID
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: FK_BUILDING_ADDRESS
+                    references: ADDRESS(ID)
+              - column:
+                  name: FLOOR_COUNT
+                  type: int
+              - column:
+                  name: BUILDING_NUMBER
+                  type: int

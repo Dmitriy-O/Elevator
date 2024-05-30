@@ -1,0 +1,350 @@
+Index: src/api/buildingsApi.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';\r\nimport {Building, BuildingsData} from '../types';\r\n\r\nexport const buildingsApi = createApi({\r\n  reducerPath: 'buildingsApi',\r\n  baseQuery: fetchBaseQuery({ baseUrl: '' }),\r\n  endpoints: (builder) => ({\r\n    getBuildings: builder.query<BuildingsData, void>({\r\n      query: () => '/api/buildings',\r\n    }),\r\n    registerBuilding: builder.mutation<Building, Partial<Building>>({\r\n      query: (newBuilding) => ({\r\n        url: '/api/buildings',\r\n        method: 'POST',\r\n        body: newBuilding,\r\n      }),\r\n    }),\r\n    getBuildingById: builder.query<Building, number>({\r\n      query: (id: number) => `/api/buildings/${id}`,\r\n    }),\r\n  }),\r\n});\r\n\r\nexport const { useGetBuildingsQuery, useRegisterBuildingMutation, useGetBuildingByIdQuery } = buildingsApi;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/api/buildingsApi.ts b/src/api/buildingsApi.ts
+--- a/src/api/buildingsApi.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/api/buildingsApi.ts	(date 1716536379651)
+@@ -1,5 +1,5 @@
+-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+-import {Building, BuildingsData} from '../types';
++import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
++import { Building, BuildingsData } from '../types';
+ 
+ export const buildingsApi = createApi({
+   reducerPath: 'buildingsApi',
+Index: src/api/liftApi.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';\r\nimport {Lift} from '../types';\r\n\r\nexport const liftApi = createApi({\r\n  reducerPath: 'liftApi',\r\n    baseQuery: fetchBaseQuery({baseUrl: ''}),\r\n  endpoints: (builder) => ({\r\n    registerLift: builder.mutation<Lift, { id: number; body: Partial<Lift> }>({\r\n      query: ({ id, body }) => ({\r\n        url: `/api/buildings/${id}/lifts`,\r\n        method: 'POST',\r\n        body,\r\n      }),\r\n    }),\r\n  }),\r\n});\r\n\r\nexport const { useRegisterLiftMutation } = liftApi;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/api/liftApi.ts b/src/api/liftApi.ts
+--- a/src/api/liftApi.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/api/liftApi.ts	(date 1716536379651)
+@@ -1,9 +1,9 @@
+-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+-import {Lift} from '../types';
++import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
++import { Lift } from '../types';
+ 
+ export const liftApi = createApi({
+   reducerPath: 'liftApi',
+-    baseQuery: fetchBaseQuery({baseUrl: ''}),
++  baseQuery: fetchBaseQuery({ baseUrl: '' }),
+   endpoints: (builder) => ({
+     registerLift: builder.mutation<Lift, { id: number; body: Partial<Lift> }>({
+       query: ({ id, body }) => ({
+Index: src/components/building/monitor/Monitor.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {useEffect, useRef} from 'react';\r\nimport {Floor, Lift} from '../../../types';\r\nimport BuildingFloor from '../floor/Floor';\r\nimport BuildingLift from '../lift/Lift';\r\nimport styles from './Monitor.module.scss';\r\n\r\ntype BuildingMonitorProps = {\r\n  lifts: Lift[];\r\n  floors: Floor[];\r\n}\r\n\r\nconst BuildingMonitor = ({ floors, lifts }: BuildingMonitorProps) => {\r\n  const monitorScrollRef = useRef<HTMLDivElement>(null);\r\n\r\n  useEffect(() => {\r\n    if (monitorScrollRef?.current) {\r\n      const monitorScroll = monitorScrollRef.current;\r\n      monitorScroll.scrollTop = monitorScroll.scrollHeight;\r\n    }\r\n  }, [monitorScrollRef?.current]);\r\n\r\n  return (\r\n    <div className={styles.monitor}>\r\n      <div className={styles.scroll} ref={monitorScrollRef}>\r\n        <div\r\n          className={styles.inner}\r\n          style={\r\n            {\r\n              '--floor-height': '150px',\r\n              '--cabin-width': '120px',\r\n              '--lift-gap': '40px',\r\n              '--lift-count': lifts.length,\r\n            } as React.CSSProperties\r\n          }\r\n        >\r\n          <div className={styles.floorsInner}>\r\n            {[...floors].sort((a, b) => (a.number > b.number ? 1 : -1)).reverse().map((floor) => (\r\n              <BuildingFloor number={floor.number} key={floor.id} />\r\n            ))}\r\n          </div>\r\n          <div className={styles.liftsInner}>\r\n            {lifts.map((lift) => (\r\n              <BuildingLift\r\n                key={lift.id}\r\n                isDoorOpen={lift.cabin.door.doorStatus === 'OPENED'}\r\n                cabinPosition={lift.cabinPosition}\r\n              />\r\n            ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default BuildingMonitor;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/building/monitor/Monitor.tsx b/src/components/building/monitor/Monitor.tsx
+--- a/src/components/building/monitor/Monitor.tsx	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/components/building/monitor/Monitor.tsx	(date 1716536379651)
+@@ -1,5 +1,5 @@
+-import {useEffect, useRef} from 'react';
+-import {Floor, Lift} from '../../../types';
++import { useEffect, useRef } from 'react';
++import { Floor, Lift } from '../../../types';
+ import BuildingFloor from '../floor/Floor';
+ import BuildingLift from '../lift/Lift';
+ import styles from './Monitor.module.scss';
+Index: src/pages/pageWrapper/PageWrapper.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {ReactElement, ReactNode} from 'react';\r\nimport './PageWrapper.scss';\r\n\r\ntype PageWrapperProps = {\r\n    title?: string;\r\n    children: ReactNode;\r\n    button?: ReactElement;\r\n}\r\n\r\nconst PageWrapper = ({ children, title, button }: PageWrapperProps) => (\r\n  <>\r\n    <div className=\"PageHeader\">\r\n      {\r\n        title && (\r\n          <h2 className=\"PageTitle\">\r\n            {title}\r\n          </h2>\r\n        )\r\n      }\r\n      {button && <div className=\"PageButton\">{button}</div>}\r\n    </div>\r\n\r\n    <div className=\"PageWrapper\">\r\n      {children}\r\n    </div>\r\n  </>\r\n);\r\n\r\nexport default PageWrapper;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/pageWrapper/PageWrapper.tsx b/src/pages/pageWrapper/PageWrapper.tsx
+--- a/src/pages/pageWrapper/PageWrapper.tsx	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/pages/pageWrapper/PageWrapper.tsx	(date 1716536379651)
+@@ -1,4 +1,4 @@
+-import {ReactElement, ReactNode} from 'react';
++import { ReactElement, ReactNode } from 'react';
+ import './PageWrapper.scss';
+ 
+ type PageWrapperProps = {
+Index: src/store/slices/buildings.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {createSlice, PayloadAction} from '@reduxjs/toolkit';\r\nimport type {BuildingsData} from '../../types';\r\n\r\nconst initialState: BuildingsData = [];\r\n\r\nconst buildingsSlice = createSlice({\r\n  name: 'buildings',\r\n  initialState,\r\n  reducers: {\r\n    setBuildings(_, action: PayloadAction<any>) {\r\n      return action.payload;\r\n    },\r\n  },\r\n});\r\n\r\nexport const { setBuildings } = buildingsSlice.actions;\r\nexport default buildingsSlice;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/slices/buildings.ts b/src/store/slices/buildings.ts
+--- a/src/store/slices/buildings.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/store/slices/buildings.ts	(date 1716536379652)
+@@ -1,5 +1,5 @@
+-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+-import type {BuildingsData} from '../../types';
++import { createSlice, PayloadAction } from '@reduxjs/toolkit';
++import type { BuildingsData } from '../../types';
+ 
+ const initialState: BuildingsData = [];
+ 
+Index: src/store/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {combineReducers, configureStore} from '@reduxjs/toolkit';\r\nimport {buildingsApi} from '../api/buildingsApi';\r\nimport buildingsSlice from './slices/buildings';\r\nimport liftSlice from './slices/liftSlice';\r\nimport {liftApi} from '../api/liftApi';\r\n\r\nconst reducer = combineReducers({\r\n  buildings: buildingsSlice.reducer,\r\n  lift: liftSlice.reducer,\r\n  [buildingsApi.reducerPath]: buildingsApi.reducer,\r\n  [liftApi.reducerPath]: liftApi.reducer,\r\n});\r\n\r\nconst middlewares = [\r\n  buildingsApi.middleware,\r\n  liftApi.middleware,\r\n];\r\n\r\nexport const store = () => configureStore({\r\n  reducer,\r\n  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),\r\n});\r\n\r\nexport type RootState = ReturnType<typeof reducer>;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/index.ts b/src/store/index.ts
+--- a/src/store/index.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/store/index.ts	(date 1716550444970)
+@@ -1,14 +1,16 @@
+-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+-import {buildingsApi} from '../api/buildingsApi';
++import { combineReducers, configureStore } from '@reduxjs/toolkit';
++import { buildingsApi } from '../api/buildingsApi';
+ import buildingsSlice from './slices/buildings';
+ import liftSlice from './slices/liftSlice';
+-import {liftApi} from '../api/liftApi';
++import { liftApi } from '../api/liftApi';
+ 
+ const reducer = combineReducers({
+   buildings: buildingsSlice.reducer,
+   lift: liftSlice.reducer,
++  // alerts: alertSlice.
+   [buildingsApi.reducerPath]: buildingsApi.reducer,
+   [liftApi.reducerPath]: liftApi.reducer,
++
+ });
+ 
+ const middlewares = [
+Index: src/types/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {ReactElement} from 'react';\r\n\r\nexport type PageConfig = {\r\n    path: string;\r\n    title?: string;\r\n    component: () => ReactElement;\r\n}\r\n\r\nexport type BuildingsData = Building[];\r\n\r\nexport type Building = {\r\n    id: number;\r\n    address: Address;\r\n    floorCount: number;\r\n    floors: Floor[];\r\n    lifts: Lift[];\r\n}\r\n\r\nexport type Address = {\r\n    city: string;\r\n    street: string;\r\n    buildingNumber: number;\r\n}\r\n\r\nexport type Floor = {\r\n    id: number\r\n    number: number\r\n}\r\n\r\nexport type Lift = {\r\n    id: number\r\n    cabinPosition: number\r\n    status: string\r\n    cabin: Cabin\r\n    engine: Engine\r\n    buttonTemplate: ButtonTypes\r\n    floorNumbers: any[]\r\n    liftListenerList: any[]\r\n    buildingId: number\r\n}\r\n\r\nexport type Cabin = {\r\n    serialNumber: string\r\n    door: Door\r\n    type: string\r\n}\r\n\r\nexport type Door = {\r\n    id: string\r\n    doorStatus: string\r\n}\r\n\r\nexport type Engine = {\r\n    serialNumber: string\r\n    type: string\r\n    status?: string\r\n}\r\n\r\nexport enum ButtonTypes {\r\n    UP_DOWN,\r\n    ONE,\r\n    COMBINED,\r\n    NONE\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/types/index.ts b/src/types/index.ts
+--- a/src/types/index.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/types/index.ts	(date 1716547217881)
+@@ -1,4 +1,4 @@
+-import {ReactElement} from 'react';
++import { ReactElement } from 'react';
+ 
+ export type PageConfig = {
+     path: string;
+@@ -60,5 +60,9 @@
+     UP_DOWN,
+     ONE,
+     COMBINED,
+-    NONE
++}
++
++export enum Alerts {
++    SUCCESSED,
++    REFUSED
+ }
+Index: src/pages/registerLift/RegisterLift.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.Header{\r\n  display: flex;\r\n  gap: 150px;\r\n  padding-bottom: 20px;\r\n  border-bottom: 1px solid ;\r\n}\r\n.AttributesContainer {\r\n  border: 3px solid grey;\r\n  margin: 60px 0;\r\n  display: flex;\r\n  padding: 20px;\r\n  width: 700px;\r\n  height: 50px;\r\n  position: relative;\r\n  .BoxLabelEngine{\r\n    background: white;\r\n    top: -13px;\r\n    position: absolute;\r\n    z-index: 1;\r\n  }\r\n  .BoxLabelCabin{\r\n    background: white;\r\n    top: 142px;\r\n    position: absolute;\r\n    z-index: 1;\r\n\r\n  }\r\n  .PropsContainer {\r\n    gap: 50px;\r\n    width: 700px;\r\n    .SelectContainer{\r\n      width: 200px;\r\n      margin-left: 100px;\r\n    }\r\n    .TextField {\r\n      width: 200px;\r\n      margin-left: 100px;\r\n    }\r\n  }\r\n}\r\n.ButtonGroup{\r\n  position: absolute;\r\n  bottom: 30px;\r\n  right: 100px;\r\n  button:first-of-type{\r\n    background: white;\r\n  }\r\n  button:last-child{\r\n    background: deepskyblue;\r\n  }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/registerLift/RegisterLift.scss b/src/pages/registerLift/RegisterLift.scss
+--- a/src/pages/registerLift/RegisterLift.scss	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/pages/registerLift/RegisterLift.scss	(date 1716548032669)
+@@ -1,9 +1,10 @@
+-.Header{
++.Header {
+   display: flex;
+   gap: 150px;
+   padding-bottom: 20px;
+-  border-bottom: 1px solid ;
++  border-bottom: 1px solid;
+ }
++
+ .AttributesContainer {
+   border: 3px solid grey;
+   margin: 60px 0;
+@@ -12,41 +13,36 @@
+   width: 700px;
+   height: 50px;
+   position: relative;
+-  .BoxLabelEngine{
++
++  .BoxLabelEngine {
+     background: white;
+     top: -13px;
+     position: absolute;
+     z-index: 1;
+   }
+-  .BoxLabelCabin{
+-    background: white;
+-    top: 142px;
+-    position: absolute;
+-    z-index: 1;
++
+ 
+-  }
++
+   .PropsContainer {
+     gap: 50px;
+     width: 700px;
+-    .SelectContainer{
++
++    .SelectContainer {
+       width: 200px;
+       margin-left: 100px;
+     }
++
+     .TextField {
+       width: 200px;
+       margin-left: 100px;
+     }
+   }
+ }
+-.ButtonGroup{
++
++.ButtonGroup {
+   position: absolute;
+   bottom: 30px;
+   right: 100px;
+-  button:first-of-type{
+-    background: white;
+-  }
+-  button:last-child{
+-    background: deepskyblue;
+-  }
++
+ }
+ 
+Index: src/pages/building/Building.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Backdrop, CircularProgress} from '@mui/material';\r\nimport {useEffect} from 'react';\r\nimport {useNavigate, useParams} from 'react-router-dom';\r\nimport {useGetBuildingByIdQuery} from '../../api/buildingsApi';\r\nimport BuildingMonitor from '../../components/building/monitor/Monitor';\r\nimport BuildingSidebar from '../../components/building/sidebar/Sidebar';\r\nimport './Building.scss';\r\n\r\ntype BuildingParams = {\r\n  buildingId: string;\r\n}\r\n\r\nconst Building = () => {\r\n  const { buildingId } = useParams() as BuildingParams;\r\n\r\n  const isNotValidBuildingId = !Number.isInteger(+buildingId);\r\n\r\n  const { data: building, isLoading, isError } = useGetBuildingByIdQuery(+buildingId, {\r\n    skip: isNotValidBuildingId,\r\n  });\r\n\r\n  const navigate = useNavigate();\r\n\r\n  useEffect(() => {\r\n    if (isError || isNotValidBuildingId) {\r\n      navigate('/');\r\n    }\r\n  }, [isError, isNotValidBuildingId]);\r\n\r\n  return (\r\n    <>\r\n      {\r\n        !!building && (\r\n          <section className=\"building\">\r\n            <BuildingSidebar\r\n              address={building.address}\r\n              floorCount={building.floorCount}\r\n              liftCount={building.lifts.length}\r\n            />\r\n            <BuildingMonitor\r\n              lifts={building.lifts}\r\n              floors={building.floors}\r\n            />\r\n          </section>\r\n        )\r\n      }\r\n      <Backdrop\r\n        open={isLoading}\r\n        sx={{ color: '#fff', zIndex: 10 }}\r\n      >\r\n        <CircularProgress color=\"inherit\" />\r\n      </Backdrop>\r\n    </>\r\n  );\r\n};\r\n\r\nexport default Building;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/building/Building.tsx b/src/pages/building/Building.tsx
+--- a/src/pages/building/Building.tsx	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/pages/building/Building.tsx	(date 1716536379651)
+@@ -1,7 +1,7 @@
+-import {Backdrop, CircularProgress} from '@mui/material';
+-import {useEffect} from 'react';
+-import {useNavigate, useParams} from 'react-router-dom';
+-import {useGetBuildingByIdQuery} from '../../api/buildingsApi';
++import { Backdrop, CircularProgress } from '@mui/material';
++import { useEffect } from 'react';
++import { useNavigate, useParams } from 'react-router-dom';
++import { useGetBuildingByIdQuery } from '../../api/buildingsApi';
+ import BuildingMonitor from '../../components/building/monitor/Monitor';
+ import BuildingSidebar from '../../components/building/sidebar/Sidebar';
+ import './Building.scss';
+Index: mock/start.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const mockserver = require('mockserver-node');\r\n\r\nconst serverPort = process.env.PORT || '7080';\r\nconst verbose = process.argv.includes('--verbose');\r\n\r\nmockserver.start_mockserver({\r\n  serverPort,\r\n  verbose,\r\n});\r\n\r\nconsole.info('Mock Server started on port:', serverPort);\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mock/start.js b/mock/start.js
+--- a/mock/start.js	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/mock/start.js	(date 1716736379105)
+@@ -4,7 +4,7 @@
+ const verbose = process.argv.includes('--verbose');
+ 
+ mockserver.start_mockserver({
+-  serverPort,
++  serverPxort,
+   verbose,
+ });
+ 
+Index: src/pages/buildings/Buildings.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {AddCircleRounded, InfoRounded} from '@mui/icons-material';\r\nimport {IconButton} from '@mui/material';\r\nimport {DataGrid, GridActionsCellItem, GridColDef} from '@mui/x-data-grid';\r\nimport {useEffect} from 'react';\r\nimport {useDispatch} from 'react-redux';\r\nimport {useNavigate} from 'react-router-dom';\r\nimport {useGetBuildingsQuery} from '../../api/buildingsApi';\r\nimport useAppSelector from '../../store/hooks';\r\nimport {setBuildings} from '../../store/slices/buildings';\r\nimport PageWrapper from '../pageWrapper/PageWrapper';\r\n\r\nconst Buildings = () => {\r\n  const dispatch = useDispatch();\r\n  const navigate = useNavigate();\r\n  const { data: buildingsData } = useGetBuildingsQuery();\r\n  const buildings = useAppSelector((state) => state.buildings);\r\n\r\n  useEffect(() => {\r\n    if (buildingsData) {\r\n      dispatch(setBuildings(buildingsData));\r\n    }\r\n  }, [buildingsData, dispatch]);\r\n\r\n  const columns: GridColDef[] = [\r\n    {\r\n      field: 'address', headerName: 'Address', flex: 880,\r\n    },\r\n    {\r\n      field: 'floors', headerName: 'Floors', type: 'number', flex: 150,\r\n    },\r\n    {\r\n      field: 'lifts', headerName: 'Lifts', type: 'number', flex: 150,\r\n    },\r\n    {\r\n      field: 'actions',\r\n      headerName: 'Actions',\r\n      type: 'actions',\r\n      flex: 150,\r\n      getActions: (params) => [\r\n        <GridActionsCellItem\r\n          key={params.id}\r\n          icon={<InfoRounded sx={{ fontSize: 28 }} />}\r\n          label=\"Building details\"\r\n          onClick={() => navigate(`/building/${params.id}`)}\r\n        />,\r\n      ],\r\n    },\r\n  ];\r\n\r\n  const rows = buildings.map((building) => ({\r\n    id: building.id,\r\n    address: `${building.address.city}, ${building.address.street} ${building.address.buildingNumber}`,\r\n    floors: building.floorCount,\r\n    lifts: building.lifts.length,\r\n  }));\r\n\r\n  return (\r\n    <PageWrapper\r\n      title=\"List of registered buildings\"\r\n      button={(\r\n        <IconButton onClick={() => navigate('/registerBuilding')}>\r\n          <AddCircleRounded fontSize=\"large\" />\r\n        </IconButton>\r\n    )}\r\n    >\r\n      <DataGrid\r\n        rows={rows}\r\n        columns={columns}\r\n        initialState={{\r\n          pagination: {\r\n            paginationModel: {\r\n              pageSize: 20,\r\n            },\r\n          },\r\n        }}\r\n        pageSizeOptions={[5, 10, 20]}\r\n      />\r\n    </PageWrapper>\r\n  );\r\n};\r\n\r\nexport default Buildings;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/buildings/Buildings.tsx b/src/pages/buildings/Buildings.tsx
+--- a/src/pages/buildings/Buildings.tsx	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/pages/buildings/Buildings.tsx	(date 1716536379651)
+@@ -1,12 +1,12 @@
+-import {AddCircleRounded, InfoRounded} from '@mui/icons-material';
+-import {IconButton} from '@mui/material';
+-import {DataGrid, GridActionsCellItem, GridColDef} from '@mui/x-data-grid';
+-import {useEffect} from 'react';
+-import {useDispatch} from 'react-redux';
+-import {useNavigate} from 'react-router-dom';
+-import {useGetBuildingsQuery} from '../../api/buildingsApi';
++import { AddCircleRounded, InfoRounded } from '@mui/icons-material';
++import { IconButton } from '@mui/material';
++import { DataGrid, GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
++import { useEffect } from 'react';
++import { useDispatch } from 'react-redux';
++import { useNavigate } from 'react-router-dom';
++import { useGetBuildingsQuery } from '../../api/buildingsApi';
+ import useAppSelector from '../../store/hooks';
+-import {setBuildings} from '../../store/slices/buildings';
++import { setBuildings } from '../../store/slices/buildings';
+ import PageWrapper from '../pageWrapper/PageWrapper';
+ 
+ const Buildings = () => {
+Index: src/constants.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Building from './pages/building/Building';\r\nimport Buildings from './pages/buildings/Buildings';\r\nimport RegisterBuilding from './pages/registerBuilding/RegisterBuilding';\r\nimport {PageConfig} from './types';\r\nimport RegisterLift from './pages/registerLift/RegisterLift';\r\n\r\nconst pages: PageConfig[] = [\r\n  {\r\n    path: '/',\r\n    title: 'Buildings page',\r\n    component: Buildings,\r\n  },\r\n  {\r\n    path: '/registerBuilding',\r\n    title: 'Register building',\r\n    component: RegisterBuilding,\r\n  },\r\n  {\r\n    path: '/building/:buildingId',\r\n    component: Building,\r\n  },\r\n  {\r\n    path: '/building/:buildingId/registerLift/',\r\n    title: 'Register Lift in Building',\r\n    component: RegisterLift,\r\n  },\r\n];\r\n\r\nexport default pages;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/constants.ts b/src/constants.ts
+--- a/src/constants.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/constants.ts	(date 1716536379651)
+@@ -1,7 +1,7 @@
+ import Building from './pages/building/Building';
+ import Buildings from './pages/buildings/Buildings';
+ import RegisterBuilding from './pages/registerBuilding/RegisterBuilding';
+-import {PageConfig} from './types';
++import { PageConfig } from './types';
+ import RegisterLift from './pages/registerLift/RegisterLift';
+ 
+ const pages: PageConfig[] = [
+Index: src/store/slices/liftSlice.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {createSlice, PayloadAction} from '@reduxjs/toolkit';\r\nimport {ButtonTypes, Lift} from '../../types';\r\n\r\nconst initialState: Lift = {\r\n  id: 0,\r\n  cabinPosition: 0,\r\n  status: '',\r\n  cabin: {\r\n    serialNumber: '',\r\n    door: {\r\n      id: '',\r\n      doorStatus: '',\r\n    },\r\n    type: '',\r\n  },\r\n  engine: {\r\n    serialNumber: '',\r\n    type: '',\r\n    status: '',\r\n  },\r\n  buttonTemplate: ButtonTypes.NONE,\r\n  floorNumbers: [],\r\n  liftListenerList: [],\r\n  buildingId: 0,\r\n};\r\n\r\nconst liftSlice = createSlice({\r\n  name: 'lift',\r\n  initialState,\r\n  reducers: {\r\n    addLift(_, action: PayloadAction<any>) {\r\n      return action.payload;\r\n    },\r\n  },\r\n});\r\n\r\nexport const {addLift} = liftSlice.actions;\r\nexport default liftSlice;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/slices/liftSlice.ts b/src/store/slices/liftSlice.ts
+--- a/src/store/slices/liftSlice.ts	(revision 041253ae18930f5e8992c60ffbb39e1954735d47)
++++ b/src/store/slices/liftSlice.ts	(date 1716543476324)
+@@ -1,5 +1,5 @@
+-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+-import {ButtonTypes, Lift} from '../../types';
++import { createSlice, PayloadAction } from '@reduxjs/toolkit';
++import { ButtonTypes, Lift } from '../../types';
+ 
+ const initialState: Lift = {
+   id: 0,
+@@ -18,7 +18,7 @@
+     type: '',
+     status: '',
+   },
+-  buttonTemplate: ButtonTypes.NONE,
++  buttonTemplate: ButtonTypes.UP_DOWN,
+   floorNumbers: [],
+   liftListenerList: [],
+   buildingId: 0,
+@@ -34,5 +34,5 @@
+   },
+ });
+ 
+-export const {addLift} = liftSlice.actions;
++export const { addLift } = liftSlice.actions;
+ export default liftSlice;

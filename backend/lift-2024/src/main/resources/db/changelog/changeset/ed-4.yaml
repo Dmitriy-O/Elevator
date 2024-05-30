@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: ed-4.2
+      author: zhenyad
+      changes:
+        - createTable:
+            tableName: CABIN
+            columns:
+              - column:
+                  name: ID
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_CABIN
+              - column:
+                  name: TYPE
+                  type: varchar(255)
+              - column:
+                  name: DOOR_STATUS
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: ed-4.1
+      author: zhenyad
+      changes:
+        - createTable:
+            tableName: ENGINE
+            columns:
+              - column:
+                  name: ID
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_ENGINE
+              - column:
+                  name: TYPE
+                  type: varchar(255)
+  - changeSet:
+      id: ed-4.3.1
+      author: daniilz
+      changes:
+        - createSequence:
+            dataType: int
+            incrementBy: 2
+            sequenceName: LIFT_SEQ_ID
+            startValue: 1
+
+  - changeSet:
+      id: ed-4.3.2
+      author: zhenyad
+      changes:
+        - createTable:
+            tableName: LIFT
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_LIFT
+              - column:
+                  name: CABIN_POSITION
+                  type: int
+              - column:
+                  name: BUTTON_TEMPLATE
+                  type: varchar(20)
+              - column:
+                  name: CABIN_ID
+                  type: varchar(40)
+                  constraints:
+                    foreignKeyName: FK_LIFT_CABIN
+                    references: CABIN(ID)
+                    deleteCascade: false
+              - column:
+                  name: ENGINE_ID
+                  type: varchar(40)
+                  constraints:
+                    foreignKeyName: FK_LIFT_ENGINE
+                    references: ENGINE(ID)
+                    deleteCascade: false
+              - column:
+                  name: BUILDING_ID
+                  type: int
+                  constraints:
+                    foreignKeyName: FK_LIFT_BUILDING
+                    references: BUILDING(ID)
+                    deleteCascade: false
+                    nullable: false
